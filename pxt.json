@@ -3,7 +3,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.2",
+        "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.3",
         "radio": "*"
     },
     "files": [
@@ -22,5 +22,5 @@
     "supportedTargets": [
         "calliopemini"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }

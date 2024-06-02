@@ -20,11 +20,11 @@ namespace radiosender
         x,
         //% block="y 0..128..255"
         y,
-        //% block="Motor 1..128..255"
+        //% block="Motor (1 ↓ 128 ↑ 255)"
         motor,
-        //% block="Servo 45°..90°..135°"
+        //% block="Servo (45° ↖ 90° ↗ 135°)"
         servo90,
-        //% block="Servo 1..16..31"
+        //% block="Servo (1 ↖ 16 ↗ 31)"
         servo16
     }
 
