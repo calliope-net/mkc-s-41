@@ -41,7 +41,7 @@ loops.everyInterval(400, function () {
             radio.fill_sendBuffer19()
             radio.setBetriebsart(radio.radio_sendBuffer19(), radio.e0Betriebsart.p0)
             radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m0, radio.eBufferOffset.b0_Motor, radio.joystickValue(radio.eJoystickValue.motor, 4))
-            radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m0, radio.eBufferOffset.b1_Servo, radio.joystickValue(radio.eJoystickValue.servo16, 6, 20))
+            radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m0, radio.eBufferOffset.b1_Servo, radio.joystickValue(radio.eJoystickValue.servo16, 6, 10))
             radio.setaktiviert(radio.radio_sendBuffer19(), radio.e3aktiviert.m0, bMotorPower)
             radio.setSchalter(radio.radio_sendBuffer19(), radio.e0Schalter.b0, input.buttonIsPressed(Button.B) && !(input.buttonIsPressed(Button.A)))
             radio.sendData(radio.radio_sendBuffer19())

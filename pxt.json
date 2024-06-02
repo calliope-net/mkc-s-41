@@ -4,14 +4,13 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.5",
+        "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.7",
         "radio": "*"
     },
     "files": [
         "main.blocks",
         "main.ts",
-        "README.md",
-        "joystick.ts"
+        "README.md"
     ],
     "testFiles": [
         "test.ts"
