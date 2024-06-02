@@ -6,14 +6,28 @@ namespace radiosender
 */ {
     const i2cqwiicJoystick_x20 = 0x20
 
-    export const n_Simulator: boolean = ("€".charCodeAt(0) == 8364) // true, wenn der Code im Simulator läuft
+    //export const n_Simulator: boolean = ("€".charCodeAt(0) == 8364) // true, wenn der Code im Simulator läuft
     //let n_Buffer19 = Buffer.create(19) // wird gesendet mit radio.sendBuffer
     export let n_x: number, n_y: number, n_xMotor: number, n_yServo: number
-    let n_xmin = 128, n_xmax = 128, n_ymin = 128, n_ymax = 128
-
+    //let n_xmin = 128, n_xmax = 128, n_ymin = 128, n_ymax = 128
 
 
     // ========== group="Joystick"
+
+
+    export enum eJoystickValue {
+        //% block="x 0..128..255"
+        x,
+        //% block="y 0..128..255"
+        y,
+        //% block="Motor 0..128..255"
+        motor,
+        //% block="Servo 135°..90°..45°"
+        servo,
+        //% block="Servo 31..16..1"
+        servo16
+    }
+
 
     //% group="Joystick"
     //% block="Joystick Qwiic einlesen" weight=9
@@ -39,21 +53,21 @@ namespace radiosender
         }
     }
 
-    export enum eJoystickValue { x, y, motor, servo }
 
     //% group="Joystick"
-    //% block="Joystick Variablen %pJoystickValue" weight=8
+    //% block="Joystick %pJoystickValue" weight=8
     export function joystickValues(pJoystickValue: eJoystickValue) {
         switch (pJoystickValue) {
             case eJoystickValue.x: return n_x
             case eJoystickValue.y: return n_y
             case eJoystickValue.motor: return n_xMotor
-            case eJoystickValue.servo: return n_yServo
+            case eJoystickValue.servo: return n_yServo // 135°..90°..45°
+            case eJoystickValue.servo16: return Math.round(n_yServo / 3 - 14) // 135°=31 90°=16 45°=1
             default: return 0
         }
     }
 
-    export enum eXY { x, y }
+    //export enum eXY { x, y }
 
     //% group="Joystick"
     //% block="minmaxZeile %pXY" weight=7
