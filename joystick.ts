@@ -20,7 +20,7 @@ namespace radiosender
         x,
         //% block="y 0..128..255"
         y,
-        //% block="Motor 0..128..255"
+        //% block="Motor 1..128..255"
         motor,
         //% block="Servo 45°..90°..135°"
         servo90,
@@ -41,6 +41,8 @@ namespace radiosender
             // Motor
             if (radio.between(n_x, 124, 132))
                 n_xMotor = 128
+            else if (n_x == 0)
+                n_xMotor = 1
             else
                 n_xMotor = n_x
             // Servo
@@ -60,7 +62,7 @@ namespace radiosender
                         else n_yServo = Math.map(n_y, 20, 235, 134, 46) // Werte von 32 bis 991 auf 46° bis 134° verteilen
                         n_yServo = Math.round(n_yServo)
                         //n_yservo = Math.round(n_yservo / 3 - 14) // 0=31 90=16 135=1
-             */
+            */
             return true
         }
     }
