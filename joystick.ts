@@ -22,9 +22,9 @@ namespace radiosender
         y,
         //% block="Motor 0..128..255"
         motor,
-        //% block="Servo 135°..90°..45°"
-        servo,
-        //% block="Servo 31..16..1"
+        //% block="Servo 45°..90°..135°"
+        servo90,
+        //% block="Servo 1..16..31"
         servo16
     }
 
@@ -39,16 +39,28 @@ namespace radiosender
             n_x = bu.getUint8(0)
             n_y = bu.getUint8(2)
             // Motor
-            if (radio.between(n_x, 124, 132)) n_xMotor = 128
-            else n_xMotor = n_x
+            if (radio.between(n_x, 124, 132))
+                n_xMotor = 128
+            else
+                n_xMotor = n_x
             // Servo
-            if (radio.between(n_y, 122, 134)) n_yServo = 90 // Ruhestellung soll 128 ist auf 128 = 90° anpassen
-            else if (n_y < 20) n_yServo = 135 // Werte < 20 wie 0 behandeln (max links)
-            else if (n_y > 235) n_yServo = 45 // Werte > 235 wie 255 behandeln (max rechts)
-            else n_yServo = Math.map(n_y, 20, 235, 134, 46) // Werte von 32 bis 991 auf 46° bis 134° verteilen
+            if (radio.between(n_y, 122, 134)) // geradeaus 90°
+                n_yServo = 90
+            else if (n_y < 20) // Werte < 20 wie 0 behandeln (max links)
+                n_yServo = 45
+            else if (n_y > 235) // Werte > 235 wie 255 behandeln (max rechts)
+                n_yServo = 135
+            else
+                n_yServo = Math.round(Math.map(n_yServo, 20, 235, 46, 134))
 
-            n_yServo = Math.round(n_yServo)
-            //n_yservo = Math.round(n_yservo / 3 - 14) // 0=31 90=16 135=1
+            /* 
+                        if (radio.between(n_y, 122, 134)) n_yServo = 90 // Ruhestellung soll 128 ist auf 128 = 90° anpassen
+                        else if (n_y < 20) n_yServo = 135 // Werte < 20 wie 0 behandeln (max links)
+                        else if (n_y > 235) n_yServo = 45 // Werte > 235 wie 255 behandeln (max rechts)
+                        else n_yServo = Math.map(n_y, 20, 235, 134, 46) // Werte von 32 bis 991 auf 46° bis 134° verteilen
+                        n_yServo = Math.round(n_yServo)
+                        //n_yservo = Math.round(n_yservo / 3 - 14) // 0=31 90=16 135=1
+             */
             return true
         }
     }
@@ -61,8 +73,8 @@ namespace radiosender
             case eJoystickValue.x: return n_x
             case eJoystickValue.y: return n_y
             case eJoystickValue.motor: return n_xMotor
-            case eJoystickValue.servo: return n_yServo // 135°..90°..45°
-            case eJoystickValue.servo16: return Math.round(n_yServo / 3 - 14) // 135°=31 90°=16 45°=1
+            case eJoystickValue.servo90: return n_yServo // 45°..90°..135°
+            case eJoystickValue.servo16: return Math.round(n_yServo / 3) - 14 // 45°=1 90°=16 135°=31 
             default: return 0
         }
     }

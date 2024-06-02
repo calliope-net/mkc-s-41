@@ -3,7 +3,7 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.0",
+        "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.1",
         "radio": "*"
     },
     "files": [
