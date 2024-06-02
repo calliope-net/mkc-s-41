@@ -47,7 +47,7 @@ loops.everyInterval(400, function () {
     } else if (radiosender.joystickQwiic() && bM1) {
         radio.fill_sendBuffer19()
         radio.setBetriebsart(radio.radio_sendBuffer19(), radio.e0Betriebsart.p0)
-        radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.p1, radio.eBufferOffset.b0_Motor, radiosender.joystickValues(radiosender.eJoystickValue.motor))
+        radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m1, radio.eBufferOffset.b0_Motor, radiosender.joystickValues(radiosender.eJoystickValue.motor))
         radio.setaktiviert(radio.radio_sendBuffer19(), radio.e3aktiviert.m1, bMotorPower)
         radio.sendData(radio.radio_sendBuffer19())
     }
