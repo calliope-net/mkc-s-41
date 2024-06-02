@@ -51,7 +51,7 @@ namespace radiosender
             else if (n_y > 235) // Werte > 235 wie 255 behandeln (max rechts)
                 n_yServo = 135
             else
-                n_yServo = Math.round(Math.map(n_yServo, 20, 235, 46, 134))
+                n_yServo = Math.round(Math.map(n_y, 20, 235, 46, 134))
 
             /* 
                         if (radio.between(n_y, 122, 134)) n_yServo = 90 // Ruhestellung soll 128 ist auf 128 = 90° anpassen
@@ -74,7 +74,8 @@ namespace radiosender
             case eJoystickValue.y: return n_y
             case eJoystickValue.motor: return n_xMotor
             case eJoystickValue.servo90: return n_yServo // 45°..90°..135°
-            case eJoystickValue.servo16: return Math.round(n_yServo / 3) - 14 // 45°=1 90°=16 135°=31 
+            //case eJoystickValue.servo16: return Math.round(n_yServo / 3 - 14)// 45°=1 90°=16 135°=31 
+            case eJoystickValue.servo16: return Math.idiv(n_yServo, 3) - 14 // Math.round(n_yServo / 3 - 14)// 45°=1 90°=16 135°=31 
             default: return 0
         }
     }
