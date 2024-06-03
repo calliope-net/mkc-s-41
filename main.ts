@@ -66,7 +66,7 @@ loops.everyInterval(400, function () {
             radio.comment("Gabelstapler")
             radio.fill_sendBuffer19()
             radio.setBetriebsart(radio.radio_sendBuffer19(), radio.e0Betriebsart.p0)
-            radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m0, radio.eBufferOffset.b0_Motor, radio.joystickValue(radio.eJoystickValue.motor, 4))
+            radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m0, radio.eBufferOffset.b0_Motor, radio.motorProzent(radio.joystickValue(radio.eJoystickValue.motor), 50))
             radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m0, radio.eBufferOffset.b1_Servo, j)
             radio.setaktiviert(radio.radio_sendBuffer19(), radio.e3aktiviert.m0, bMotorPower)
             radio.setByte(radio.radio_sendBuffer19(), radio.eBufferPointer.m1, radio.eBufferOffset.b0_Motor, radio.joystickValue(radio.eJoystickValue.ymotor, 4))
