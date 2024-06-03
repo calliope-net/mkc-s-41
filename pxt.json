@@ -5,7 +5,8 @@
     "dependencies": {
         "core": "*",
         "fernsteuerung": "github:calliope-net/fernsteuerung#v0.1.9",
-        "radio": "*"
+        "radio": "*",
+        "Grove": "github:calliope-edu/pxt-grove#v0.9.2"
     },
     "files": [
         "main.blocks",
@@ -22,5 +23,5 @@
     "supportedTargets": [
         "calliopemini"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
